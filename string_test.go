@@ -6,5 +6,5 @@ import (
 )
 
 func TestStr_GetBetween(t *testing.T) {
-	fmt.Println(Str("1234").GetBetween("","34"))
+	fmt.Println(Str("1234").GetBetween("1","232323"))
 }

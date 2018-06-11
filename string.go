@@ -63,7 +63,7 @@ func (str Str)GetBetween(start, end string) string {
 	str0:=str.ToString()
 	n := strings.Index(str0, start)
 	if n == -1 {
-		n = 0
+		return ""
 	}
 	str0 = string([]byte(str0)[n+len(start):])
 	m := strings.Index(str0, end)
