@@ -29,6 +29,9 @@ fmt.Println(util.Str("12345").GetBetween("1","4"))
 // 给字符数组洗牌
 fmt.Println(util.StrArr{"1","2","3"}.Random2String())
 // output:2,1,3
+
+// 验证授权码
+util.VerifyMachineLicense("serverName")
 ```
 
 
