@@ -1,4 +1,4 @@
-package util
+package go_util
 
 import (
 	"crypto/md5"

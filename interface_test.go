@@ -1,8 +1,8 @@
-package util
+package go_util
 
 import (
-	"testing"
 	"fmt"
+	"testing"
 )
 
 func TestT_ToInt(t *testing.T) {

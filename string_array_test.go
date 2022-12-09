@@ -1,11 +1,11 @@
-package util
+package go_util
 
 import (
-	"testing"
 	"fmt"
+	"testing"
 )
 
 func TestStrArr_Random(t *testing.T) {
-	a:=StrArr{"a","b","c"}
+	a := StrArr{"a", "b", "c"}
 	fmt.Println(a.Random2String())
 }

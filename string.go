@@ -1,4 +1,4 @@
-package util
+package go_util
 
 import (
 	"strconv"
@@ -58,9 +58,10 @@ func (s Str) ToMap() map[string]string {
 	}
 	return mp
 }
+
 // GetBetweenStr 获取中间字符
-func (str Str)GetBetween(start, end string) string {
-	str0:=str.ToString()
+func (str Str) GetBetween(start, end string) string {
+	str0 := str.ToString()
 	n := strings.Index(str0, start)
 	if n == -1 {
 		return ""
