@@ -19,19 +19,19 @@ Then import the validator package into your own code.
 示例:
 ```golang
 // interface转化为string
-fmt.Println(util.NewT(123).ToString())
+fmt.Println(go_util.NewT(123).ToString())
 // output:123
 
 // 获取字符串中间字符
-fmt.Println(util.Str("12345").GetBetween("1","4"))
+fmt.Println(go_util.Str("12345").GetBetween("1","4"))
 // output:23
 
 // 给字符数组洗牌
-fmt.Println(util.StrArr{"1","2","3"}.Random2String())
+fmt.Println(go_util.StrArr{"1","2","3"}.Random2String())
 // output:2,1,3
 
 // 验证授权码
-util.VerifyMachineLicense("serverName")
+go_util.VerifyMachineLicense("serverName")
 ```
 
 
