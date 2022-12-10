@@ -1,4 +1,4 @@
-module go_util
+module goutil
 
 go 1.19
 

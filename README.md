@@ -1,4 +1,4 @@
-# go_util
+# goutil
 go语言工具
 
 - 支持给字符数组洗牌
@@ -10,28 +10,28 @@ Installation
 
 Use go get.
 
-	go get github.com/Jetereting/go_util
+	go get github.com/Jetereting/goutil
 
 Then import the validator package into your own code.
 
-	import "github.com/Jetereting/go_util"
+	import "github.com/Jetereting/goutil"
 
 示例:
 ```golang
 // interface转化为string
-fmt.Println(go_util.NewT(123).ToString())
+fmt.Println(goutil.NewT(123).ToString())
 // output:123
 
 // 获取字符串中间字符
-fmt.Println(go_util.Str("12345").GetBetween("1","4"))
+fmt.Println(goutil.Str("12345").GetBetween("1","4"))
 // output:23
 
 // 给字符数组洗牌
-fmt.Println(go_util.StrArr{"1","2","3"}.Random2String())
+fmt.Println(goutil.StrArr{"1","2","3"}.Random2String())
 // output:2,1,3
 
 // 验证授权码
-go_util.VerifyMachineLicense("serverName")
+goutil.VerifyMachineLicense("serverName")
 ```
 
 
