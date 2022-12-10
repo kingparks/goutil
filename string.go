@@ -7,12 +7,12 @@ import (
 
 type Str string
 
-// Convert Str to string
+// ToString Convert Str to string
 func (s Str) ToString() string {
 	return string(s)
 }
 
-// Convert string to int64
+// ToInt64 Convert string to int64
 func (s Str) ToInt64() int64 {
 	i, err := strconv.ParseInt(s.ToString(), 10, 64)
 	if err != nil {
@@ -21,17 +21,17 @@ func (s Str) ToInt64() int64 {
 	return i
 }
 
-// Convert string to int32
+// ToInt32 Convert string to int32
 func (s Str) ToInt32() int32 {
 	return int32(s.ToInt64())
 }
 
-// Convert string to int
+// ToInt Convert string to int
 func (s Str) ToInt() int {
 	return int(s.ToInt32())
 }
 
-// Convert string to float64
+// ToFloat64 Convert string to float64
 func (s Str) ToFloat64() float64 {
 	f, err := strconv.ParseFloat(s.ToString(), 64)
 	if err != nil {
@@ -40,7 +40,7 @@ func (s Str) ToFloat64() float64 {
 	return f
 }
 
-// Convert string to float32
+// ToFloat32 Convert string to float32
 func (s Str) ToFloat32() float32 {
 	return float32(s.ToFloat64())
 }
@@ -59,9 +59,9 @@ func (s Str) ToMap() map[string]string {
 	return mp
 }
 
-// GetBetweenStr 获取中间字符
-func (str Str) GetBetween(start, end string) string {
-	str0 := str.ToString()
+// GetBetween GetBetweenStr 获取中间字符
+func (s Str) GetBetween(start, end string) string {
+	str0 := s.ToString()
 	n := strings.Index(str0, start)
 	if n == -1 {
 		return ""

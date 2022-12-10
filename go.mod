@@ -1,4 +1,4 @@
-module goutil
+module github.com/Jetereting/goutil
 
 go 1.19
 
