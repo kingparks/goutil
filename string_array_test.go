@@ -6,6 +6,6 @@ import (
 )
 
 func TestStrArr_Random(t *testing.T) {
-	a := StrArr{"a", "b", "c"}
-	fmt.Println(a.Random2String())
+	a := StrArr{"a", "b", "c", "c", "1"}
+	fmt.Println(a.RemoveDuplicate())
 }
