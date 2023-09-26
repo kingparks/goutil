@@ -15,9 +15,10 @@ func getToken(corpID, agentID, corpSecret string) string {
 }
 
 func Send(corpID, agentID, corpSecret, msg string) {
-	msg += time.Now().Format("\n\n2006-01-02 15:04")
-	token := getToken(corpID, agentID, corpSecret)
-	_, _ = httplib.Post("https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=" + token).Body(`
+	go func(corpID, agentID, corpSecret, msg string) {
+		msg += time.Now().Format("\n\n2006-01-02 15:04")
+		token := getToken(corpID, agentID, corpSecret)
+		_, _ = httplib.Post("https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=" + token).Body(`
 {
    "touser" : "@all",
    "msgtype" : "text",
@@ -27,4 +28,5 @@ func Send(corpID, agentID, corpSecret, msg string) {
    },
    "enable_duplicate_check": 1,
 }`).DoRequest()
+	}(corpID, agentID, corpSecret, msg)
 }
