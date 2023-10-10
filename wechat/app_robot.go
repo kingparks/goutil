@@ -1,6 +1,7 @@
 package wechat
 
 import (
+	"github.com/Jetereting/goutil/net"
 	"github.com/astaxie/beego/httplib"
 	"github.com/tidwall/gjson"
 	"time"
@@ -17,6 +18,7 @@ func getToken(corpID, agentID, corpSecret string) string {
 func Send(corpID, agentID, corpSecret, msg string) {
 	go func(corpID, agentID, corpSecret, msg string) {
 		msg += time.Now().Format("\n\n2006-01-02 15:04")
+		msg += "\n" + net.GetIPV4() + "\n"
 		token := getToken(corpID, agentID, corpSecret)
 		_, _ = httplib.Post("https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=" + token).Body(`
 {
