@@ -1,6 +1,7 @@
 package fofa
 
 import (
+	"fmt"
 	"encoding/base64"
 	"errors"
 	"github.com/astaxie/beego/httplib"
@@ -8,9 +9,12 @@ import (
 	"strings"
 )
 
-func Search(email string, key string, query string) (result []string, err error) {
+func Search(email string, key string, query string, size int) (result []string, err error) {
+	if size == 0 {
+		size = 10000
+	}
 	query = base64.StdEncoding.EncodeToString([]byte(query))
-	sResult, err := httplib.Get("https://fofa.info/api/v1/search/all?email=" + email + "&key=" + key + "&size=10000&qbase64=" + query).
+	sResult, err := httplib.Get("https://fofa.info/api/v1/search/all?email=" + email + "&key=" + key + "&size=" + fmt.Sprint(size) + "&qbase64=" + query).
 		String()
 	if err != nil {
 		return
