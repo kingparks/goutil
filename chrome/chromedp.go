@@ -6,9 +6,9 @@ import (
 	"time"
 )
 
-func GetResult(url, wait string) (html string) {
+func GetResult(remoteChrome, url, wait string) (html string, err error) {
 	userAgent := "Mozilla/5.0 (Linux; Android 5.0; SM-G900P Build/LRX21T) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Mobile Safari/537.37"
-	allocContext, _ := chromedp.NewExecAllocator(
+	allocContext, cancel := chromedp.NewExecAllocator(
 		context.Background(),
 		chromedp.Flag("headless", true),
 		chromedp.Flag("disable-gpu", true),
@@ -18,22 +18,30 @@ func GetResult(url, wait string) (html string) {
 		chromedp.Flag("blink-settings", "imagesEnabled=false"),
 		chromedp.UserAgent(userAgent),
 	)
-	ctx, cancel := chromedp.NewContext(
+	if remoteChrome != "" {
+		allocContext, cancel = chromedp.NewRemoteAllocator(
+			allocContext, remoteChrome,
+		)
+	}
+	allocContext, cancel = chromedp.NewContext(
 		allocContext,
 	)
 	defer cancel()
 
-	// 设置timeout
-	ctx, cancel = context.WithTimeout(ctx, 5*time.Second)
+	allocContext, cancel = context.WithTimeout(allocContext, 65*time.Second)
 	defer cancel()
 
-	err := chromedp.Run(ctx,
-		chromedp.Navigate(url),
-		chromedp.WaitVisible(wait),
-		chromedp.OuterHTML(`document.querySelector("html")`, &html, chromedp.ByJSPath),
-	)
-	if err != nil {
-		return
+	if wait == "" {
+		err = chromedp.Run(allocContext,
+			chromedp.Navigate(url),
+			chromedp.OuterHTML(`document.querySelector("html")`, &html, chromedp.ByJSPath),
+		)
+	} else {
+		err = chromedp.Run(allocContext,
+			chromedp.Navigate(url),
+			chromedp.WaitVisible(wait),
+			chromedp.OuterHTML(`document.querySelector("html")`, &html, chromedp.ByJSPath),
+		)
 	}
 	return
 }
