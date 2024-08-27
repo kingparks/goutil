@@ -2,8 +2,8 @@ package dingding
 
 import (
 	"encoding/json"
-	"github.com/Jetereting/goutil/net"
 	"github.com/astaxie/beego/httplib"
+	"github.com/kingparks/goutil/net"
 )
 
 func Send(token, text string) {

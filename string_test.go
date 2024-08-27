@@ -2,7 +2,7 @@ package goutil
 
 import (
 	"fmt"
-	"github.com/Jetereting/goutil/net"
+	"github.com/kingparks/goutil/net"
 	"testing"
 )
 

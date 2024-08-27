@@ -1,8 +1,8 @@
 package wechat
 
 import (
-	"github.com/Jetereting/goutil/net"
 	"github.com/astaxie/beego/httplib"
+	"github.com/kingparks/goutil/net"
 	"github.com/tidwall/gjson"
 	"time"
 )

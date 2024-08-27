@@ -30,10 +30,10 @@ func getMacMD5() string {
 
 // VerifyMachineLicense 验证服务授权
 func VerifyMachineLicense(appName string) bool {
-	resp, err := httplib.Get("https://ghproxy.com/https://raw.githubusercontent.com/Jetereting/license-key/main/" + appName + ".txt").DoRequest()
+	resp, err := httplib.Get("https://ghproxy.com/https://raw.githubusercontent.com/kingparks/license-key/main/" + appName + ".txt").DoRequest()
 	if err != nil || resp.StatusCode != 200 {
 		fmt.Println("ghproxy 失败", resp.StatusCode, err)
-		resp, err = httplib.Get("https://raw.githubusercontent.com/Jetereting/license-key/main/" + appName + ".txt").Retries(2).DoRequest()
+		resp, err = httplib.Get("https://raw.githubusercontent.com/kingparks/license-key/main/" + appName + ".txt").Retries(2).DoRequest()
 		if err != nil || resp.StatusCode != 200 {
 			fmt.Println("github 失败", resp.StatusCode, err)
 			return false

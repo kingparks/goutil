@@ -10,11 +10,11 @@ Installation
 
 Use go get.
 
-	go get github.com/Jetereting/goutil
+	go get github.com/kingparks/goutil
 
 Then import the validator package into your own code.
 
-	import "github.com/Jetereting/goutil"
+	import "github.com/kingparks/goutil"
 
 示例:
 ```golang
